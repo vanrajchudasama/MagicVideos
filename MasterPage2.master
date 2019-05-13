@@ -1,0 +1,138 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage2.master.cs" Inherits="MasterPage2" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+      <title>Magic Video</title>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="My Play Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap -->
+<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' media="all" />
+<!-- //bootstrap -->
+<link href="css/dashboard.css" rel="stylesheet">
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' media="all" />
+<script src="js/jquery-1.11.1.min.js"></script>
+<!--start-smoth-scrolling-->
+<!-- fonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+<!-- //fonts -->
+ 
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="Default.aspx"><h1>Magic Video</h1></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+			<div class="top-search">
+				<form class="navbar-form navbar-right">
+                   
+					<input id="searchtextbox" type="text" class="form-control" placeholder="Search...">
+                    <input  type="button" value="Search" onclick="search();" style="height:35px;background-color:#00dafc;color:white;border-radius:5px;font-size:15px;border:none;"/>
+                   
+					
+				</form>
+			</div>
+			<div class="header-top-right">
+				<div class="file">
+					<a href="Upload.aspx">Upload</a>
+				</div>	
+                <%if(Session["user"]==null)
+                  { %>
+				
+				<div class="signin">
+					<a href="Login.aspx" >Sign In</a>
+					
+				</div>
+                <%} 
+                  else
+                  {%>
+                <div class="signin">
+					<a href="Myprofile.aspx" class="play-icon popup-with-zoom-anim">My Account</a>
+					
+				</div>
+                <%} %>
+				<div class="clearfix"> </div>
+			</div>
+        </div>
+		<div class="clearfix"> </div>
+      </div>
+    </nav>
+	
+    <form id="form1" runat="server">
+          <div class="developers" style="width:80%;margin-left:10%;margin-right:10%;margin-top:50px;">
+			<div class="developers-banner creators-banner" style="background-color:red;">
+				<!-- container -->
+				<div class="container">
+					<image src="<%= user_image %>" style="width:100px;height:100px;border-radius:100px;margin-top:50px;border:5px solid #fff;background-color:#d4cfcf"></image>
+				</div>
+				<!-- //container -->
+			</div>
+        <div style="height:100px;width:100%;">
+            <div style="width:80%;margin-left:20%;height:100%;padding-top:1px;" >
+                <table style="width:30% ;font-size:15px;
+            font-family:Verdana;">
+                    <tr>
+                        <td>
+                             <h3>vanraj</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                           10 subscribers
+                        </td>
+                        <td ><%= tot_videos %> videos</td>
+                    </tr>
+                </table>
+               
+
+            </div>
+        </div>
+        <div style="width:100%;height:50px;padding:5px;background-color:#d4cfcf;box-shadow:1px 1px 1px 1px">
+           <ul style="float:left;">
+               <li style="list-style:none;height:100%;width:160px;text-align:center;float:left;line-height:40px;color:black;">
+                   <a href="User_home.aspx" style="text-decoration:none;color:black;font-size:15px">Home</a>
+               </li>
+                <li style="list-style:none;height:100%;width:160px;text-align:center;float:left;line-height:40px">
+                   <a href="MyVideos.aspx" style="text-decoration:none;color:black;font-size:15px">My Videos</a>
+               </li>
+                
+               <li style="list-style:none;height:100%;width:160px;text-align:center;float:left;line-height:40px">
+                   <a href="Myprofile.aspx" style="text-decoration:none;color:black;font-size:15px">My Profile</a>
+               </li>
+               <li style="list-style:none;height:100%;width:160px;text-align:center;float:left;line-height:40px">
+                   <a href="MySubscription.aspx" style="text-decoration:none;color:black;font-size:15px">My Subscriptions</a>
+               </li>
+           </ul>
+            <ul style="float:right">
+                <li style="list-style:none;height:100%;width:160px;text-align:center;float:left;line-height:40px">
+                   <a href="logout.aspx" style="text-decoration:none;color:red;font-size:15px">LOG OUT</a>
+               </li>
+            </ul>
+        </div>
+			
+		</div>
+   <div class="developers" style="width:80%;margin-left:10%;margin-right:10%;margin-top:0px;margin-bottom:5px;">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
